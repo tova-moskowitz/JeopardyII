@@ -1,3 +1,3 @@
-class Game < ActiveRecord::Base
+class Game < ApplicationRecord
   self.belongs_to :player
 end
