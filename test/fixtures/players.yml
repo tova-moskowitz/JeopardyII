@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: 
+  highest_score: 
+  number_games_played: 
+  player_id: 
+  correct_answers: 
+  final_score: 
+  created_at: 2017-05-29 10:32:56
+
+two:
+  username: 
+  highest_score: 
+  number_games_played: 
+  player_id: 
+  correct_answers: 
+  final_score: 
+  created_at: 2017-05-29 10:32:56

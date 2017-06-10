@@ -1,0 +1,19 @@
+
+  <head>
+    <meta charset="utf-8">
+    <title%></title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          WELCOME <%= @player.username.upcase %>
+        </div>
+        <div class="col-md-4">
+          This is game number <%= @player.number_games_played += 1 %> for you!
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

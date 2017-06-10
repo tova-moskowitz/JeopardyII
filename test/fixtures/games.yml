@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_id: 
+  correct_answers: 
+  final_score: 
+  created_at: 2017-05-29 10:30:53
+
+two:
+  player_id: 
+  correct_answers: 
+  final_score: 
+  created_at: 2017-05-29 10:30:53

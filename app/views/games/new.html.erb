@@ -1,0 +1,16 @@
+<h1>Add new game</h1>
+
+<%= form_tag :action => 'create' do %>
+<p><label for = "game_title">Title</label>:
+
+<%= text_field 'games', 'player_id' %></p>
+<p><label for = "game_player_id">Player</label>:
+
+<%= collection_select(:games, :player_id, @players, :id, :username) %></p>
+<p><label for = "game_score">High Score</label><br/>
+
+<%= text_area 'games', 'score' %></p>
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'index'} %>
