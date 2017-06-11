@@ -1,15 +1,1 @@
-
-
-<% if @games.blank? %>
-<p>There are no games currently in the system.</p>
-<% else %>
-<p>These are the current games in our system</p>
-
-<ul id = "games">
-   <% @games.each do |game| %>
-
-   <% end %>
-</ul>
-
-<% end %>
-<p><%= link_to "Add new Game", {:action => 'new' }%></p>
+<% #Do I even need this view? %>

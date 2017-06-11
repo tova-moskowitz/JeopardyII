@@ -1,5 +1,14 @@
+<% array_how_many_games = [] %>
+
+<% @games.each do |game| %>
+  <% if game.player_id == @player.id %>
+    <% array_how_many_games << game.id %>
+  <% end %>
+<% end %>
+<% @player.number_games_played = array_how_many_games.count %>
+
 <h3>Welcome, <%= @player.username%>!</h3>
 
 <p>You've played <%= @player.number_games_played %> games so far. Would you like to make that <%= @player.number_games_played += 1 %>?</p>
 
-<a href="/players/<%= @player.id%>/games/new">Start new Game</a>
+<a href="/players/<%= @player.id%>/games/">Start new Game</a>
