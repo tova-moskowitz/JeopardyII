@@ -1,11 +1,3 @@
-<% array_how_many_games = [] %>
-
-<% @games.each do |game| %>
-  <% if game.player_id == @player.id %>
-    <% array_how_many_games << game.id %>
-  <% end %>
-<% end %>
-<% @player.number_games_played = array_how_many_games.count %>
 
 <h3>Welcome, <%= @player.username%>!</h3>
 

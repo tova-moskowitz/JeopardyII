@@ -3,7 +3,14 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @games = Game.all
-    # binding.pry
+     array_how_many_games = []
+
+     @games.each do |game|
+       if game.player_id == @player.id
+         array_how_many_games << game.id
+       end
+     end
+     @player.number_games_played = array_how_many_games.count
   end
 
   def new
@@ -18,5 +25,16 @@ class PlayersController < ApplicationController
   def stats
     @player = Player.find(params[:id])
     @games = Game.all
+
+    array_how_many_games = []
+
+    @games.each do |game|
+      if game.player_id == @player.id
+        array_how_many_games << game.id
+      end
+    end
+    @player.number_games_played = array_how_many_games.count
   end
+
+
 end
