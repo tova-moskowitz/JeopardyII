@@ -1,6 +1,5 @@
-<h3>Start a New Game</h3>
+<h3><%= @player.username %> would like to start a new game</h3>
 
 <%= form_for @game, url: {action: "create"} do |f| %>
   <%= f.submit "Start a new Game" %>
 <% end %>
-<h1>NEW</h1>

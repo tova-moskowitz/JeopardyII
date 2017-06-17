@@ -1,20 +1,28 @@
 class GamesController < ApplicationController
 
+# List all games for a particular player
+# /players/:player_id/games
 def index
   @player = Player.find(params[:player_id])
   @games  = Game.all
 
 end
 
+# Show one specific game for a particular player
+# /players/:player_id/games/:game_id
 def show
   @player = Player.find(params[:player_id])
 end
 
+# form to begin a new game for a particular player
+# /players/:player_id/games/new
 def new
   @game    = Game.new
   @player  = Player.find(params[:player_id])
 end
 
+#POST method to create new game for particular player
+# /players/:players_id/games
 def create
   @player  = Player.find(params[:player_id])
   @game    = Game.create({player_id: params[:player_id]})

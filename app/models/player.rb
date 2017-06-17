@@ -5,13 +5,13 @@ class Player < ApplicationRecord
 
 
 
-def self.which_games
-	all_my_games = self.ids
-	end
-
-def self.how_many_games
-	games_count = self.ids.count
-end
+# def self.which_games
+# 	all_my_games = self.ids
+# 	end
+#
+# def self.how_many_games
+# 	games_count = self.ids.count
+# end
 
 
 end

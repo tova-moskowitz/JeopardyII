@@ -1,7 +1,14 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   # GET /session/new
   # get login page with login form
+
+  def index
+    @players = Player.all
+    @games = Game.all
+  end
+
+
   def new
     @player = Player.find_by(params["id"])
   end
