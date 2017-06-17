@@ -6,6 +6,15 @@ def index
   @player = Player.find(params[:player_id])
   @games  = Game.all
 
+  @array_all_games_for_player = []
+  @games.each do |game|
+    if game.player_id == @player.id
+      @array_all_games_for_player << game.id
+      @count = @array_all_games_for_player.count
+      @which_game = game.id
+      @score = game.final_score
+    end
+  end
 end
 
 # Show one specific game for a particular player

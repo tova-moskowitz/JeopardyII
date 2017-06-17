@@ -5,4 +5,11 @@
 </ul> -->
 
 
-<h5>All of <%= @player.username %>'s Games:</h5>
+<h5><%= @player.username %>, you have played <%= @count %> Games:</h5>
+<ol>
+  <li><%= @which_game %>
+    <ul>
+      <li><%= @score %></li>
+    </ul>
+  </li>
+</ol>
