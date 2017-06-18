@@ -1,15 +1,13 @@
-<!-- <ul>
-  <li><%= @player.username %></li>
-  <li><%= @player.number_games_played %></li>
-  <li><%= @player.highest_score %></li>
-</ul> -->
-
-
 <h5><%= @player.username %>, you have played <%= @count %> Games:</h5>
 <ol>
-  <li><%= @which_game %>
-    <ul>
-      <li><%= @score %></li>
-    </ul>
-  </li>
+  <% @array_all_games_for_player.each do |one_game| %>
+  <% game = @games[one_game] %>
+    <li>
+      <ul><%= game.id %>
+        <li><%= game.final_score %></li>
+        <li><%= game.correct_answers %></li>
+      </ul>
+    </li>
+    <hr>
+<% end %>
 </ol>
