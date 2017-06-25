@@ -33,7 +33,6 @@ class GamesController < ApplicationController
   def create
     @player  = Player.find(params[:player_id])
     @game    = Game.create({player_id: params[:player_id]})
-
     @player.save(number_games_played: @player.number_games_played += 1)
 
     redirect_to "/players/#{@player.id}/games/#{@game.id}"
