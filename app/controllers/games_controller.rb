@@ -5,13 +5,15 @@ class GamesController < ApplicationController
 # games#index
   def index
     @player = Player.find(params[:player_id])
-    @games  = Game.all
+    @game = Game.where(:player_id => @player.id).to_a
   end
 
   # Show one specific game for a particular player
   # /players/:player_id/games/:game_id
   def show
     @player = Player.find(params[:player_id])
+    @game = Game.where(:player_id => @player.id).to_a
+    puts @game
   end
 
   # form to begin a new game for a particular player

@@ -1,17 +1,14 @@
 <!-- games#index -->
 
 <h5><%= @player.username %>, you have played <%= @player.number_games_played %> Games:</h5>
-<ol>
-  <% @games.each do |one_game| %>
-  <% binding.pry %>
-    <li>
-        <p><a href="/players/<%= @player.id %>/games"><%= one_game.created_at.strftime('%A %B %d, %Y') %></a></p>
-      <ul>
-        <li><%= one_game.final_score %></li>
-        <li><%= one_game.correct_answers %></li>
-
-      </ul>
-    </li>
-    <hr>
-<% end %>
-</ol>
+<ul>
+  <% @game.each do |my_game| %>
+  <li><a href="/players/<%= @player.id %>/games/<%= my_game.id%>"><%= my_game.id %></a>
+    <ul>
+       <li>Date Created: <%= my_game.created_at.strftime('%A, %B %m, %Y') %></li>
+       <li>Correct Answers: <%= my_game.correct_answers %></li>
+       <li>Final Score: <%= my_game.final_score %></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>

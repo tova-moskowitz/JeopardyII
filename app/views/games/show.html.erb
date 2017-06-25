@@ -5,4 +5,7 @@
   <li>Show data about the player and the game in the same view</li>
 </ul> -->
 
-<h4>Now showing <%= @player.username %>'s game # (add details for game_id) </h4>
+<% @game.each do |hello| %>
+
+<h4>Now showing <%= @player.username %>'s game #<%= hello.id%></h4>
+<% end %>

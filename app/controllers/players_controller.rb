@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
   def index
     @players = Player.all
     @games  = Game.all
+
   end
 
 # show player's profile
@@ -12,11 +13,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @games = Game.all
-    @games.each do |game|
-      if game.player_id == @player.id
-        game
-      end
-    end
+
   end
 
 # form to create new player
