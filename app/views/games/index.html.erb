@@ -5,10 +5,11 @@
   <% @game.each do |my_game| %>
   <li><a href="/players/<%= @player.id %>/games/<%= my_game.id%>"><%= my_game.id %></a>
     <ul>
-       <li>Date Created: <%= my_game.created_at.strftime('%A, %B %m, %Y') %></li>
+       <li>Date Created: <%= my_game.created_at.strftime('%A, %B %d, %Y') %></li>
        <li>Correct Answers: <%= my_game.correct_answers %></li>
        <li>Final Score: <%= my_game.final_score %></li>
     </ul>
   </li>
   <% end %>
 </ul>
+<a href="/players/<%= @player.id %>/games/new" name="btn start-new-game" class="btn">Start New Game</a>

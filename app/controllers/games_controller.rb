@@ -13,7 +13,12 @@ class GamesController < ApplicationController
   def show
     @player = Player.find(params[:player_id])
     @game = Game.where(:player_id => @player.id).to_a
-    puts @game
+
+    @game.each do |one_game|
+      if params[:id].to_i == one_game.id
+          @this_game = one_game
+      end
+    end
   end
 
   # form to begin a new game for a particular player
