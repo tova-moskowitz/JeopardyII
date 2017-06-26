@@ -28,6 +28,31 @@ class PlayersController < ApplicationController
     redirect_to "/players/#{@players.id}/games/new"
   end
 
+
+# form to edit player record
+# /players/id/edit
+  def edit
+    @player = Player.find(params[:id])
+  end
+
+
+# patch method to update player record
+  def update
+    @player = Player.find(params[:id])
+    @player.update({username: params[:player][:username]})
+    redirect_to "/players/#{@player.id}"
+  end
+
+
+  # def delete
+  #
+  # end
+
+  def destroy
+    @player = Player.find(params[:id]).delete
+    redirect_to "/players"
+  end
+
 end
 
 
