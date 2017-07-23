@@ -4,20 +4,9 @@ class Player < ApplicationRecord
 	validates_uniqueness_of :username
 
 
-# 
-# def self.get_game_id
-# 	binding.pry
-# 	player = self.find(params[:id])
-#
-# 	game = Game.where(:player_id => player.id).to_a
-#
-# 	game.each do |one_game|
-# 		if params[:id].to_i == one_game.id
-# 				this_game = one_game
-# 		end
-# 	end
-#
-# end
+  def self.whoami(name, verb)
+		return 'I am ' + name + ' and I like ' + verb
+	end
 
 
 

@@ -39,7 +39,7 @@ class PlayersController < ApplicationController
 # patch method to update player record
   def update
     @player = Player.find(params[:id])
-    @player.update({username: params[:player][:username]})
+    @player.update({username: params[:player][:username], favorite_thing: params[:player][:favorite_thing]})
     redirect_to "/players/#{@player.id}"
   end
 
