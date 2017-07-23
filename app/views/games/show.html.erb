@@ -6,10 +6,9 @@
 </ul> -->
 
 
-<h4>Now showing <%= @player.username %>'s game #
+<h4>Now showing <%= @player.username%>'s game #
   <%= @this_game['id'] %></h4>
 
-  <!-- id | player_id | correct_answers | final_score |         created_at         |         updated_at          -->
   <ul>
     <li>Date Created: <%= @this_game.created_at.strftime('%A, %B %d, %Y') %></li>
     <li>Correct Answers: <%= @this_game.correct_answers %></li>
@@ -17,6 +16,5 @@
   </ul>
 
 
-GAME
 
-<%= Game.whoami("Tova", "knit") %>
+<%= Game.whoami(@player.username, "knit") %>
