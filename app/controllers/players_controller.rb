@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
 
 # post method to create new player in db
   def create
-    @players = Player.create({username: params[:player][:username]})
+    @players = Player.create({username: params[:player][:username], favorite_thing: params[:player][:favorite_thing]})
     redirect_to "/players/#{@players.id}/games/new"
   end
 
