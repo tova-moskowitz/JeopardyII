@@ -13,9 +13,7 @@ class GamesController < ApplicationController
   def show
     @player = Player.find(params[:player_id])
     @game = Game.where(:player_id => @player.id).to_a
-    @category_id = Game.get_category_ids
-    @questions = Game.get_questions
-    @clues = Game.get_clues
+    @clue = Game.get_question_object
 
     @game.each do |one_game|
       if params[:id].to_i == one_game.id
