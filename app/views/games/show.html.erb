@@ -6,11 +6,13 @@
 </ul> -->
 
 
-<h4>Now showing <%= @player.username%>'s game #
-  <%= @this_game['id'] %></h4>
+<h4>Now showing <%= @player.username%>'s game #<%= @this_game['id'] %></h4>
 
   <ul>
     <li>Date Created: <%= @this_game.created_at.strftime('%A, %B %d, %Y') %></li>
     <li>Correct Answers: <%= @this_game.correct_answers %></li>
     <li>Final Score: <%= @this_game.final_score %></li>
   </ul>
+  <%= "**************#{@questions}" %>
+  <%= "*********#{@category_id}" %>
+  <%= "*********#{@clues}" %>
