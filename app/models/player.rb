@@ -4,14 +4,10 @@ class Player < ApplicationRecord
 	validates_uniqueness_of :username
 
 
+  def self.whoami(name, verb)
+		return 'I am ' + name + ' and I like ' + verb
+	end
 
-# def self.which_games
-# 	all_my_games = self.ids
-# 	end
-#
-# def self.how_many_games
-# 	games_count = self.ids.count
-# end
 
 
 end

@@ -1,0 +1,10 @@
+
+<%= form_for @player do |f| %>
+<%= f.label :username %>:
+<%= f.text_field :username %><br />
+
+<%= f.label :favorite_thing %>:
+<%= f.text_field :favorite_thing %><br />
+
+  <%= f.submit "Update my profile" %>
+<% end %>

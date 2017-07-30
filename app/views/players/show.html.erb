@@ -1,6 +1,15 @@
 
 <h3>Welcome, <%= @player.username%>! This is your profile page</h3>
 
-<!-- <p>You've played <%= @player.number_games_played %> games so far. Would you like to make that <%= @player.number_games_played += 1 %>?</p>
+<%= Player.whoami(@player.username, @player.favorite_thing) %> <br><br>
 
-<a href="/players/<%= @player.id%>/games/">Start new Game</a> -->
+
+<p>You've played <%= @player.number_games_played %> games so far. Click <a href="/players/<%= @player.id%>/games/">here </a>to see a list of all your games.</p>
+
+
+
+Click <a href="/players/<%= @player.id%>/edit/">here </a>to edit your profile.</p>
+
+
+
+<%= button_to "Delete my Profile", @player, :method => :delete %>

@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
   def index
     @players = Player.all
     @games  = Game.all
+
   end
 
 # show player's profile
@@ -12,6 +13,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @games = Game.all
+
   end
 
 # form to create new player
@@ -22,8 +24,33 @@ class PlayersController < ApplicationController
 
 # post method to create new player in db
   def create
-    @players = Player.create({username: params[:player][:username]})
+    @players = Player.create({username: params[:player][:username], favorite_thing: params[:player][:favorite_thing]})
     redirect_to "/players/#{@players.id}/games/new"
+  end
+
+
+# form to edit player record
+# /players/id/edit
+  def edit
+    @player = Player.find(params[:id])
+  end
+
+
+# patch method to update player record
+  def update
+    @player = Player.find(params[:id])
+    @player.update({username: params[:player][:username], favorite_thing: params[:player][:favorite_thing]})
+    redirect_to "/players/#{@player.id}"
+  end
+
+
+  # def delete
+  #
+  # end
+
+  def destroy
+    @player = Player.find(params[:id]).delete
+    redirect_to "/players"
   end
 
 end

@@ -2,41 +2,46 @@ class GamesController < ApplicationController
 
 # List all games for a particular player
 # /players/:player_id/games
-def index
-  @player = Player.find(params[:player_id])
-  @games  = Game.all
+# games#index
+  def index
+    @player = Player.find(params[:player_id])
+    @game = Game.where(:player_id => @player.id).to_a
+  end
 
-  @array_all_games_for_player = []
+  # Show one specific game for a particular player
+  # /players/:player_id/games/:game_id
+  def show
+    @player = Player.find(params[:player_id])
+    @game = Game.where(:player_id => @player.id).to_a
+    @category_id = Game.get_category_ids
+    @questions = Game.get_questions
+    @clues = Game.get_clues
 
-  @games.each do |game|
-    if game.player_id == @player.id
-      @array_all_games_for_player << game.id
-      @count = @array_all_games_for_player.count
+    @game.each do |one_game|
+      if params[:id].to_i == one_game.id
+          @this_game = one_game
+      end
     end
   end
-end
 
-# Show one specific game for a particular player
-# /players/:player_id/games/:game_id
-def show
-  @player = Player.find(params[:player_id])
-end
-
-# form to begin a new game for a particular player
-# /players/:player_id/games/new
-def new
-  @game    = Game.new
-  @player  = Player.find(params[:player_id])
-end
-
-#POST method to create new game for particular player
-# /players/:players_id/games
-def create
-  @player  = Player.find(params[:player_id])
-  @game    = Game.create({player_id: params[:player_id]})
-
-  redirect_to "/players/#{@player.id}/games/#{@game.id}"
+  # form to begin a new game for a particular player
+  # /players/:player_id/games/new
+  def new
+    @game    = Game.new
+    @player  = Player.find(params[:player_id])
   end
+
+  #POST method to create new game for particular player
+  # /players/:players_id/games
+  def create
+    @player  = Player.find(params[:player_id])
+    @game    = Game.create({player_id: params[:player_id]})
+    @player.save(number_games_played: @player.number_games_played += 1)
+
+    redirect_to "/players/#{@player.id}/games/#{@game.id}"
+  end
+
+
 
 end
  #      @player = Player.all

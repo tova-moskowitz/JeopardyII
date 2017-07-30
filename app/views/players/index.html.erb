@@ -2,8 +2,7 @@
 <ul>
 <% @players.each do |player| %>
   <li>
-    <a href="players/<%= player.id %>"><%= player.username %>
-    </a> - <span><%=player.highest_score %></span>
+    <a href="/players/<%= player.id %>"><%= player.username %></a> 
   </li>
 <% end %>
 </ul>
