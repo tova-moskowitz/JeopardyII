@@ -13,37 +13,13 @@
     <li>Final Score: <%= @this_game.final_score %></li>
   </ul>
 
-  Airdate: <%= @clue[0][:airdate] %><br>
-  Category: <%= @clue[0][:category_name] %><br>
-  Question: <%= @clue[0][:question] %><br>
-  Value: <%= @clue[0][:value] %><br>
-  Answer: <%= @clue[0][:answer] %><br>
-  cat_id: <%= @clue[0][:category_id] %><br><br>
 
-  Airdate: <%= @clue[1][:airdate] %><br>
-  Category: <%= @clue[1][:category_name] %><br>
-  Question: <%= @clue[1][:question] %><br>
-  Value: <%= @clue[1][:value] %><br>
-  Answer: <%= @clue[1][:answer] %><br>
-  cat_id: <%= @clue[1][:category_id] %><br><br>
 
-  Airdate: <%= @clue[2][:airdate] %><br>
-  Category: <%= @clue[2][:category_name] %><br>
-  Question: <%= @clue[2][:question] %><br>
-  Value: <%= @clue[2][:value] %><br>
-  Answer: <%= @clue[2][:answer] %><br>
-  cat_id: <%= @clue[2][:category_id] %><br><br>
+<% @clue.each do |clue |%>
+<%= clue[:airdate]%>
+<h4><%= clue[:category_name].upcase %></h4> <br>
+<p><%= clue[:question]%></p>
+<p><%= clue[:value]%> </p>
+<p><%= clue[:answer]%> </p>
 
-  Airdate: <%= @clue[3][:airdate] %><br>
-  Category: <%= @clue[3][:category_name] %><br>
-  Question: <%= @clue[3][:question] %><br>
-  Value: <%= @clue[3][:value] %><br>
-  Answer: <%= @clue[3][:answer] %><br>
-  cat_id: <%= @clue[3][:category_id] %><br><br>
-
-  Airdate: <%= @clue[4][:airdate] %><br>
-  Category: <%= @clue[4][:category_name] %><br>
-  Question: <%= @clue[4][:question] %><br>
-  Value: <%= @clue[4][:value] %><br>
-  Answer: <%= @clue[4][:answer] %><br>
-  cat_id: <%= @clue[4][:category_id] %><br><br>
+<% end %>

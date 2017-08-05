@@ -27,7 +27,7 @@ class Game < ApplicationRecord
 
     my_clues.each do |clue|
       cat_name = Category.where(id: clue.category_id)[0]['title']
-      airdate = Clue.where(id: clue.id)[0]['airdate']
+      airdate = Clue.where(id: clue.id)[0]['airdate'].strftime('%A, %B %d, %Y')
 
 
       my_questions =
