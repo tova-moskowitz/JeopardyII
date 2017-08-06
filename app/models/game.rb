@@ -13,22 +13,15 @@ class Game < ApplicationRecord
   end
 
   def self.get_clues
-    #todo needs refactoring. Only use category_ids which meet criteria of having 5 clues with the same airdate
-    cat_ids = self.get_category_ids
-    my_clues = []
+    twenty_clues = []
+    all_ids = self.get_category_ids
 
-    cat_ids.each do |cat_id|
-      airdate = Clue.where(category_id: cat_id)[0]['airdate']
-
-      all_the_clues = Clue.where(category_id: cat_id, airdate: airdate).order(:value).limit(5).to_a.length == 5 ? Clue.where(category_id: cat_id, airdate: airdate).order(:value).limit(5).to_a : Clue.where(category_id: (0..self.category_count).to_a.shuffle.take(1), airdate: airdate).order(:value).limit(5).to_a
-
-      five_clues = all_the_clues.length < 5 ? Clue.where(category_id: cat_id, airdate: airdate).order(:value).limit(5).to_a : all_the_clues
-
-          my_clues << my_clues += five_clues
-      binding.pry
+    all_ids.each do |single_id|
+      airdate = Clue.where(category_id: single_id)[0][:airdate]
+      five_clues = Clue.where(category_id: single_id, airdate: airdate)
+      twenty_clues << twenty_clues += five_clues
     end
-
-    my_clues
+    twenty_clues
   end
 
   def self.get_question_object
@@ -37,7 +30,6 @@ class Game < ApplicationRecord
 
     my_clues.each do |clue|
       cat_name = Category.where(id: clue.category_id)[0]['title']
-
       cat_name =
           [
               category_id: clue.category_id,

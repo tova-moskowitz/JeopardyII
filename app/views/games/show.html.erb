@@ -14,10 +14,15 @@
   </ul>
 </div>
 
+<h2><%= Game.get_clues.length %></h2>
+
 <div class="row">
   <div class="col-md-3">
 
     <% @clue.each do |clue_array| %>
+        <h1>invalid count: <%= clue_array[:invalid_count] %></h1>
+
+          <p> <%= clue_array[:category_name] %></p>
           <p> <%= clue_array[:question] %></p>
           <p><%= clue_array[:value] %></p>
           <p><%= clue_array[:answer] %></p>
