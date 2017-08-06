@@ -4,22 +4,25 @@
   <li>Show data about the player and the game in the same view</li>
 </ul> -->
 
-
-<h4>Now showing <%= @player.username%>'s game #<%= @this_game['id'] %></h4>
+<div class="row">
+  <h4>Now showing <%= @player.username %>'s game #<%= @this_game['id'] %></h4>
 
   <ul>
     <li>Date Created: <%= @this_game.created_at.strftime('%A, %B %d, %Y') %></li>
     <li>Correct Answers: <%= @this_game.correct_answers %></li>
     <li>Final Score: <%= @this_game.final_score %></li>
   </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+
+    <% @clue.each do |clue_array| %>
+          <p> <%= clue_array[:question] %></p>
+          <p><%= clue_array[:value] %></p>
+          <p><%= clue_array[:answer] %></p>
+    <% end %>
 
 
-
-<% @clue.each do |clue |%>
-<%= clue[:airdate]%>
-<h4><%= clue[:category_name].upcase %></h4> <br>
-<p><%= clue[:question]%></p>
-<p><%= clue[:value]%> </p>
-<p><%= clue[:answer]%> </p>
-
-<% end %>
+  </div>
+</div>
