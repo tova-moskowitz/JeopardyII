@@ -26,22 +26,23 @@ class Game < ApplicationRecord
 
   def self.get_question_object
     my_clues = self.get_clues
-    array_of_arrays = []
+    array_of_hashes = []
 
     my_clues.each do |clue|
       cat_name = Category.where(id: clue.category_id)[0]['title']
-      cat_name =
+      array_of_hashes +=
           [
+              {
               category_id: clue.category_id,
               airdate: clue.airdate,
               category_name: cat_name,
               question: clue.question,
               value: clue.value,
               answer: clue.answer
+              }
           ]
-      array_of_arrays << array_of_arrays += cat_name
     end
-    array_of_arrays
+    array_of_hashes
   end
 
 end

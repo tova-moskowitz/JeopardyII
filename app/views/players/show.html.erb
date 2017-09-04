@@ -4,12 +4,10 @@
 <%= Player.whoami(@player.username, @player.favorite_thing) %> <br><br>
 
 
-<p>You've played <%= @player.number_games_played %> games so far. Click <a href="/players/<%= @player.id%>/games/">here </a>to see a list of all your games.</p>
+<p>You've played <%= @player.number_games_played %> game<%= @player.number_games_played < 2 ? ' ' : 's ' %>so far. Click <a href="/players/<%= @player.id%>/games/">here </a>to see a list of all your games.</p>
 
 
+ <a href="/players/<%= @player.id%>/edit/" class="btn btn-warning">Edit</a></p>
+<!-- <%= link_to 'Edit',url_for(action: :edit, id: @player.id),method: :get, :class => "btn btn-warning"%> -->
 
-Click <a href="/players/<%= @player.id%>/edit/">here </a>to edit your profile.</p>
-
-
-
-<%= button_to "Delete my Profile", @player, :method => :delete %>
+<%= link_to 'Delete',url_for(action: :destroy, id: @player.id),method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"} %>

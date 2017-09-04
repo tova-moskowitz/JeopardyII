@@ -17,13 +17,21 @@
 <h2><%= Game.get_clues.length %></h2>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 col" style="margin-left: 25px;">
 
-    <% @clue.each do |clue_array| %>
-          <p> <%= clue_array[:category_name] %></p>
-          <p> <%= clue_array[:question] %></p>
-          <p><%= clue_array[:value] %></p>
-          <p><%= clue_array[:answer] %></p>
+    <% @clue.each do |hash| %>
+        <% hash_keys = hash.keys %>
+        <% hash_keys.each do |key| %>
+
+            <% if key == :category_name %>
+                <h2> <%= hash[key] %> </h2>
+            <% else %>
+                <p> <%= hash[:airdate] %></p>
+                <p> <%= hash[:question] %></p>
+                <p> <%= hash[:value] %></p>
+                <p>  <%= hash[:answer] %> </p>
+            <% end %>
+        <% end %>
     <% end %>
 
 
