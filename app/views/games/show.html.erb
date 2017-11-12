@@ -6,7 +6,6 @@
 
 <div class="row">
   <h4>Now showing <%= @player.username %>'s game #<%= @this_game['id'] %></h4>
-
   <ul>
     <li>Date Created: <%= @this_game.created_at.strftime('%A, %B %d, %Y') %></li>
     <li>Correct Answers: <%= @this_game.correct_answers %></li>
@@ -14,26 +13,21 @@
   </ul>
 </div>
 
-<h2><%= Game.get_clues.length %></h2>
-
 <div class="row">
-  <div class="col-md-3 col" style="margin-left: 25px;">
-
-    <% @clue.each do |hash| %>
-        <% hash_keys = hash.keys %>
-        <% hash_keys.each do |key| %>
-
-            <% if key == :category_name %>
-                <h2> <%= hash[key] %> </h2>
-            <% else %>
-                <p> <%= hash[:airdate] %></p>
-                <p> <%= hash[:question] %></p>
-                <p> <%= hash[:value] %></p>
-                <p>  <%= hash[:answer] %> </p>
-            <% end %>
-        <% end %>
+  <% @categories.each do |category| %>
+  <div class="col-md-4 col-xs-12">
+    <% category_name = category.keys[0] %>
+    <h3><%= category_name.upcase %></h3>
+    <h5><%= category[category_name][0][0][:airdate].strftime('%A, %B %d, %Y') %></h5>
+    <% category[category_name][0].each do |cat| %>
+      <div class="clue">
+        <ul>
+          <li><%= cat[:value] %></li>
+          <li><%= cat[:question] %></li>
+          <li><%= cat[:answer] %></li>
+        </ul>
+      </div><!-- clue -->
+      <% end %>
+    </div><!-- col -->
     <% end %>
-
-
-  </div>
-</div>
+</div><!-- row -->

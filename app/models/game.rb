@@ -8,41 +8,22 @@ class Game < ApplicationRecord
   end
 
   def self.get_category_ids
-    cat_ids = (0..self.category_count).to_a.shuffle.take(4)
+    cat_ids = (0..self.category_count).to_a.shuffle.take(3)
     cat_ids
   end
 
-  def self.get_clues
-    twenty_clues = []
+  def self.get_categories
+    all_clues = []
     all_ids = self.get_category_ids
 
     all_ids.each do |single_id|
+      category_name = Category.where(id: single_id)[0][:title]
       airdate = Clue.where(category_id: single_id)[0][:airdate]
-      five_clues = Clue.where(category_id: single_id, airdate: airdate)
-      twenty_clues << twenty_clues += five_clues
+      clues = [category_name => [Clue.where(category_id: single_id, airdate: airdate)]]
+      all_clues += clues
     end
-    twenty_clues
+    all_clues
   end
 
-  def self.get_question_object
-    my_clues = self.get_clues
-    array_of_hashes = []
-
-    my_clues.each do |clue|
-      cat_name = Category.where(id: clue.category_id)[0]['title']
-      array_of_hashes +=
-          [
-              {
-              category_id: clue.category_id,
-              airdate: clue.airdate,
-              category_name: cat_name,
-              question: clue.question,
-              value: clue.value,
-              answer: clue.answer
-              }
-          ]
-    end
-    array_of_hashes
-  end
 
 end
