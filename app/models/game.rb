@@ -13,16 +13,16 @@ class Game < ApplicationRecord
   end
 
   def self.get_categories
-    all_clues = []
     all_ids = self.get_category_ids
+    all_categories = []
 
     all_ids.each do |single_id|
       category_name = Category.where(id: single_id)[0][:title]
       airdate = Clue.where(category_id: single_id)[0][:airdate]
       clues = [category_name => [Clue.where(category_id: single_id, airdate: airdate)]]
-      all_clues += clues
+      all_categories += clues
     end
-    all_clues
+    all_categories
   end
 
 
