@@ -1,15 +1,12 @@
 <!-- games#index -->
 
 <h5><%= @player.username %>, you have played <%= @player.number_games_played %> Games:</h5>
-<ul>
-  <% @game.each do |my_game| %>
-  <li><a href="/players/<%= @player.id %>/games/<%= my_game.id%>"><%= my_game.id %></a>
+<% @game.each do |my_game| %>
+  <h4><a href="/players/<%= @player.id %>/games/<%= my_game.id%>"><%= @game_number += 1 %></a></h4>
     <ul>
        <li>Date Created: <%= my_game.created_at.strftime('%A, %B %d, %Y') %></li>
        <li>Correct Answers: <%= my_game.correct_answers %></li>
        <li>Final Score: <%= my_game.final_score %></li>
     </ul>
-  </li>
   <% end %>
-</ul>
 <a href="/players/<%= @player.id %>/games/new" name="btn start-new-game" class="btn">Start New Game</a>
