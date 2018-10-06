@@ -4,7 +4,6 @@ class GamesController < ApplicationController
 # /players/:player_id/games
 # games#index
   def index
-
     @player = Player.find(params[:player_id])
     @game = Game.where(:player_id => @player.id).to_a
     @game_number = 0;
